@@ -147,4 +147,7 @@ elif [ "$1" = "debug" ]; then
 else
 	build_release $1
 	build_debug $1
+
+	release 0 $1
+	release 1 $1
 fi
