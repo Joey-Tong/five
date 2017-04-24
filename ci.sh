@@ -88,25 +88,25 @@ build()
 release()
 {
 	if [ $1 -eq 0 ]; then
-		dest_dir=$RELEASE_FOLDER_ROOT/$2/debug
+		type="debug"
 	else
-		dest_dir=$RELEASE_FOLDER_ROOT/$2/release
+		type="release"
 	fi
 
+	dest_dir=$RELEASE_FOLDER_ROOT/$2/$type
 	mkdir -p $dest_dir
 	
-	cp $root_dir/build/aiolia/bin/ar71xx/zb_image $dest_dir -fr
-	cp $root_dir/build/aiolia/bin/ar71xx/zb_update_image $dest_dir -fr
-	cp $root_dir/build/aiolia/bin/ar71xx/*.sig $dest_dir -f 
-	cp $root_dir/build/aiolia/bin/ar71xx/userdata.img $dest_dir -f 
-	cp $root_dir/build/aiolia/bin/ar71xx/update-description.txt $dest_dir -f 
-	cp $root_dir/build/aiolia/bin/ar71xx/factory.bin $dest_dir -f 
-	cp $root_dir/build/aiolia/bin/ar71xx/openwrt-ar71xx-ap135-qca-legacy-uboot.bin $dest_dir -f 
-	cp $root_dir/build/aiolia/bin/ar71xx/openwrt-ar71xx-ap135-qca-legacy-ubootenv.bin $dest_dir -f 
-	cp $root_dir/build/aiolia/bin/ar71xx/openwrt-ar71xx-generic-aiolia-a0-kernel.bin $dest_dir -f 
-	cp $root_dir/build/aiolia/bin/ar71xx/openwrt-ar71xx-generic-aiolia-a0-rootfs-squashfs.bin $dest_dir -f 
-	cp $root_dir/build/aiolia/bin/ar71xx/openwrt-ar71xx-generic-aiolia-a0-squashfs-sysupgrade.bin $dest_dir -f 
-	
+	cp $root_dir/aiolia_ci_output/$type/zb_image $dest_dir -fr
+	cp $root_dir/aiolia_ci_output/$type/zb_update_image $dest_dir -fr
+	cp $root_dir/aiolia_ci_output/$type/*.sig $dest_dir -f
+	cp $root_dir/aiolia_ci_output/$type/userdata.img $dest_dir -f
+	cp $root_dir/aiolia_ci_output/$type/update-description.txt $dest_dir -f
+	cp $root_dir/aiolia_ci_output/$type/factory.bin $dest_dir -f
+	cp $root_dir/aiolia_ci_output/$type/openwrt-ar71xx-ap135-qca-legacy-uboot.bin $dest_dir -f
+	cp $root_dir/aiolia_ci_output/$type/openwrt-ar71xx-ap135-qca-legacy-ubootenv.bin $dest_dir -f
+	cp $root_dir/aiolia_ci_output/$type/openwrt-ar71xx-generic-aiolia-a0-kernel.bin $dest_dir -f
+	cp $root_dir/aiolia_ci_output/$type/openwrt-ar71xx-generic-aiolia-a0-rootfs-squashfs.bin $dest_dir -f
+	cp $root_dir/aiolia_ci_output/$type/openwrt-ar71xx-generic-aiolia-a0-squashfs-sysupgrade.bin $dest_dir -f
 }
 
 get_username()
