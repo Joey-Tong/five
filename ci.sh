@@ -109,6 +109,7 @@ release()
 	cp $root_dir/aiolia_ci_output/$type/openwrt-ar71xx-generic-aiolia-a0-kernel.bin $dest_dir -f
 	cp $root_dir/aiolia_ci_output/$type/openwrt-ar71xx-generic-aiolia-a0-rootfs-squashfs.bin $dest_dir -f
 	cp $root_dir/aiolia_ci_output/$type/openwrt-ar71xx-generic-aiolia-a0-squashfs-sysupgrade.bin $dest_dir -f
+	cp $root_dir/aiolia_ci_output/$type/ksios-* $dest_dir -f
 }
 
 get_username()
