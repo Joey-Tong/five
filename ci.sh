@@ -81,6 +81,8 @@ build()
 	rm -rf "$root_dir/aiolia_ci_output/$output_folder_name"
 	mkdir -p "$root_dir/aiolia_ci_output/$output_folder_name"
 	cp bin/ar71xx/* "$root_dir/aiolia_ci_output/$output_folder_name" -fr
+	cp staging_dir/host/bin/ksios-server "$root_dir/aiolia_ci_output/$output_folder_name"
+	cp staging_dir/host/bin/ksios-client "$root_dir/aiolia_ci_output/$output_folder_name"
 
 	cd "$root_dir"
 }
