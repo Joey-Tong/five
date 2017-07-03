@@ -6,5 +6,7 @@ ding_print()
 {
 	msg=$1
 
+#echo $msg
+
 	curl -ks $token_url -H "Content-Type: application/json" -d " {\"msgtype\": \"text\", \"text\": { \"content\": \"$msg\" } }" >> /dev/null
 }

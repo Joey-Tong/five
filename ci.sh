@@ -83,6 +83,7 @@ build()
 	cp bin/ar71xx/* "$root_dir/aiolia_ci_output/$output_folder_name" -fr
 	cp staging_dir/host/bin/ksios-server "$root_dir/aiolia_ci_output/$output_folder_name"
 	cp staging_dir/host/bin/ksios-client "$root_dir/aiolia_ci_output/$output_folder_name"
+	cp staging_dir/host/bin/ksios-cli "$root_dir/aiolia_ci_output/$output_folder_name/ksios-sconsole"
 
 	cd "$root_dir"
 }
@@ -124,8 +125,10 @@ build_release()
 	err=$(build 1 $tag)
 	if [ $? -ne 0 ]; then
 		ding_print "Build failed. Message: $err"
+		return 1
 	else
 		ding_print "Build SUCCEED!"
+		return 0
 	fi
 }
 
@@ -136,8 +139,10 @@ build_debug()
 	err=$(build 0 $tag)
 	if [ $? -ne 0 ]; then
 		ding_print "Build failed. Message: $err"
+		return 1
 	else
 		ding_print "Build SUCCEED!"
+		return 0
 	fi
 }
 
@@ -149,7 +154,9 @@ elif [ "$1" = "debug" ]; then
 	build_debug "$2"
 else
 	build_release $1
+	[ $? -ne 0 ] && exit 1
 	build_debug $1
+	[ $? -ne 0 ] && exit 1
 
 	release 0 $1
 	release 1 $1
