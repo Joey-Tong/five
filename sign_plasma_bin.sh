@@ -78,7 +78,7 @@ if [ "$1" != "" ]; then
 	ZB_IMAGE_PATH=$1
 else
 	# default path
-	ZB_IMAGE_PATH=./zb_update_image
+	ZB_IMAGE_PATH=./plasma/zb_update_image
 fi
 
 # check the image path is exist or not
@@ -114,6 +114,6 @@ do
 done
 
 dest_dir=$RELEASE_FOLDER_ROOT/$version
-mkdir -p $dest_dir
-cp -fr zb_image $dest_dir
-cp -fr zb_update_image $dest_dir
+mkdir -p $dest_dir/update
+cp -fr ./plasma/zb_image/* $dest_dir
+cp -fr $ZB_IMAGE_PATH $dest_dir/update
