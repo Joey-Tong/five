@@ -41,18 +41,6 @@ build()
 		rm -rf build/aiolia
 	fi
 
-	check_folder "$root_dir/zb_update_image"
-	if [ $? -ne 0 ]; then
-		echo "Zigbee update image was not found."
-		return 1
-	fi
-
-	check_folder "$root_dir/zb_image"
-	if [ $? -ne 0 ]; then
-		echo "Zigbee image was not found."
-		return 1
-	fi
-
 	git clone git@192.168.0.2:aiolia build/aiolia
 	cd build/aiolia
 
@@ -75,7 +63,6 @@ build()
 	if [ $? -ne 0 ]; then
 		return 1
 	fi
-	cp "$root_dir/zb_image" bin/ar71xx -fr
 
 	# copy build result
 	rm -rf "$root_dir/aiolia_ci_output/$output_folder_name"
@@ -99,8 +86,6 @@ release()
 	dest_dir=$RELEASE_FOLDER_ROOT/$2/$type
 	mkdir -p $dest_dir
 	
-	cp $root_dir/aiolia_ci_output/$type/zb_image $dest_dir -fr
-	cp $root_dir/aiolia_ci_output/$type/zb_update_image $dest_dir -fr
 	cp $root_dir/aiolia_ci_output/$type/*.sig $dest_dir -f
 	cp $root_dir/aiolia_ci_output/$type/userdata.img $dest_dir -f
 	cp $root_dir/aiolia_ci_output/$type/update-description.txt $dest_dir -f
