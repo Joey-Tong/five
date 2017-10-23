@@ -106,7 +106,7 @@ get_username()
 build_release()
 {
 	tag=$1
-	ding_print "Building release version $tag from $(get_username)..."
+	ding_print "Building release version $tag ..."
 	err=$(build 1 $tag)
 	if [ $? -ne 0 ]; then
 		ding_print "Build failed. Message: $err"
@@ -120,7 +120,7 @@ build_release()
 build_debug()
 {
 	tag=$1
-	ding_print "Building debug version $tag from $(get_username)..."
+	ding_print "Building debug version $tag ..."
 	err=$(build 0 $tag)
 	if [ $? -ne 0 ]; then
 		ding_print "Build failed. Message: $err"
@@ -138,7 +138,7 @@ if [ "$1" = "release" ]; then
 elif [ "$1" = "debug" ]; then
 	build_debug "$2"
 else
-	build_release $1
+build_release $1
 	[ $? -ne 0 ] && exit 1
 	build_debug $1
 	[ $? -ne 0 ] && exit 1

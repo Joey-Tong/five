@@ -92,7 +92,8 @@ fi
 ImagePathCoor=coordinator
 ImagePathSwitch=switch
 ImagePathSensor=sensor
-ImagePathArray=($ZB_IMAGE_PATH/$ImagePathCoor $ZB_IMAGE_PATH/$ImagePathSwitch $ZB_IMAGE_PATH/$ImagePathSensor)
+ImagePathPlug=plug
+ImagePathArray=($ZB_IMAGE_PATH/$ImagePathCoor $ZB_IMAGE_PATH/$ImagePathSwitch $ZB_IMAGE_PATH/$ImagePathSensor $ZB_IMAGE_PATH/$ImagePathPlug)
 
 version=$(get_version $ZB_IMAGE_PATH/$ImagePathCoor)
 
