@@ -9,7 +9,7 @@ gssingManu=0000
 
 parse_ver_inner_code() {
 	local inner=$1
-	max_inner_num=10
+	max_inner_num=11
 	inner_list="AL B1 B2 B3 B4 B5 B6 B7 B8 B9 B10"
 
 	if [ $inner -eq 0 ]; then
@@ -30,7 +30,8 @@ get_version() {
 	major=$(echo "$verstr" | cut -b 1-2)
 	minor=$(echo "$verstr" | cut -b 3-4)
 	build=$(echo "$verstr" | cut -b 5-7)
-	inner=$(echo "$verstr" | cut -b 8)
+	hex_inner=$(echo "$verstr" | cut -b 8)
+	inner=$(printf "%d" 0x$hex_inner)
 
 	if [ "$inner" -eq "0" ]; then
 		verfloat=$(echo "$((16#${major})) $((16#${minor})) $((16#${build}))" | awk '{printf("%d.%d.%d",$1,$2,$3)}')
